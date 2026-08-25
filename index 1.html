@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afriqu'Art · Galerie d'art africain</title>
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #faf7f2;
+            color: #2e241e;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ---------- BOUTON MENU MOBILE ---------- */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: #4b2e1b;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+        }
+
+        /* ---------- HEADER / NAV ---------- */
+        header {
+            background: linear-gradient(145deg, #f3ede6, #e8dfd6);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #d8c9b8;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+            color: #a77b5a;
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #3d2a1a;
+        }
+        .logo h1 span {
+            font-weight: 700;
+            color: #8b5e3c;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #4b3422;
+            font-size: 1.05rem;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.25s ease;
+        }
+
+        nav ul li a:hover {
+            border-bottom-color: #a77b5a;
+            color: #2b1a0e;
+        }
+
+        nav ul li a.active {
+            border-bottom-color: #8b5e3c;
+            color: #2b1a0e;
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            background: linear-gradient(135deg, #dacfc1 0%, #cbb9a6 100%);
+            border-radius: 30px;
+            padding: 3.5rem 3rem;
+            margin: 2.5rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .hero-text {
+            flex: 1 1 280px;
+        }
+
+        .hero-text h2 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: #2b1f14;
+            line-height: 1.2;
+        }
+        .hero-text h2 strong {
+            font-weight: 600;
+            color: #4d2e18;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin: 1.5rem 0 2rem;
+            color: #3d2d1d;
+            max-width: 500px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #3d2a1a;
+            color: #f5ede4;
+            padding: 0.9rem 2.8rem;
+            border-radius: 60px;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 14px rgba(61, 42, 26, 0.25);
+        }
+
+        .btn:hover {
+            background: #261a10;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(61, 42, 26, 0.3);
+        }
+
+        .hero-image {
+            flex: 1 1 240px;
+            text-align: center;
+            font-size: 6rem;
+            color: #5a3f2a;
+            opacity: 0.8;
+            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.1));
+        }
+
+        /* ---------- SECTION ŒUVRES ---------- */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin: 3rem 0 1.8rem;
+            color: #3b2a1a;
+            border-left: 6px solid #a77b5a;
+            padding-left: 1.2rem;
+        }
+
+        .grid-oeuvres {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem 1.2rem 1.8rem;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            transition: 0.3s ease;
+            border: 1px solid #ece3d9;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
+            border-color: #d6c3b0;
+        }
+
+        .card i {
+            font-size: 3.5rem;
+            color: #7a5a3e;
+            margin-bottom: 0.8rem;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #38281b;
+        }
+
+        .card p {
+            color: #6b5543;
+            font-size: 0.95rem;
+            margin: 0.6rem 0;
+        }
+
+        .card .prix {
+            display: inline-block;
+            margin-top: 0.8rem;
+            background: #e6dbcf;
+            padding: 0.2rem 1.4rem;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #3d2a1a;
+            font-size: 1rem;
+        }
+
+        /* ---------- À PROPOS ---------- */
+        .about {
+            background: #e7dbcf;
+            border-radius: 40px;
+            padding: 2.8rem 3rem;
+            margin: 3.5rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 2 1 280px;
+        }
+        .about-text h3 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+        .about-text p {
+            color: #2f2218;
+            font-size: 1.1rem;
+        }
+
+        .about-icon {
+            flex: 1 1 120px;
+            text-align: center;
+            font-size: 5rem;
+            color: #624b34;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background: #2d2017;
+            color: #d6c9bc;
+            padding: 2.5rem 0 2rem;
+            border-radius: 40px 40px 0 0;
+            margin-top: 3rem;
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .footer-grid div {
+            flex: 1 1 160px;
+        }
+
+        .footer-grid h4 {
+            color: #ede3d8;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-grid p, .footer-grid a {
+            color: #b8a697;
+            text-decoration: none;
+            display: block;
+            margin: 0.5rem 0;
+            transition: 0.2s;
+        }
+
+        .footer-grid a:hover {
+            color: #f0e1d2;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+            font-size: 1.6rem;
+            margin-top: 0.8rem;
+        }
+
+        .social-icons a {
+            color: #b8a697;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            color: #f0e1d2;
+            transform: scale(1.08);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2.5rem;
+            border-top: 1px solid #3d2e21;
+            padding-top: 1.8rem;
+            font-size: 0.9rem;
+            color: #9a897b;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #f3ede6;
+                padding: 1.5rem 0;
+                border-radius: 30px;
+                margin-top: 1rem;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            nav ul.open {
+                display: flex;
+            }
+
+            nav ul li a {
+                font-size: 1.2rem;
+                border-bottom: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-image {
+                margin-top: 1.5rem;
+            }
+            .about {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+            .logo h1 {
+                font-size: 1.6rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-flex {
+                flex-wrap: wrap;
+            }
+            .logo i {
+                font-size: 1.8rem;
+            }
+            .hero-text h2 {
+                font-size: 2.2rem;
+            }
+            .btn {
+                padding: 0.7rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+    <div class="container header-flex">
+        <div class="logo">
+            <i class="fas fa-mask"></i>
+            <h1>Afriqu'<span>Art</span></h1>
+        </div>
+
+        <!-- menu toggle (mobile) -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav>
+            <ul id="navList">
+                <li><a href="#" class="active">Accueil</a></li>
+                <li><a href="#">Œuvres</a></li>
+                <li><a href="#">Artistes</a></li>
+                <li><a href="#">Expositions</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- ============ MAIN ============ -->
+<main class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-text">
+            <h2>L'âme de l'Afrique <br><strong>en chaque œuvre</strong></h2>
+            <p>Découvrez une collection unique d'art contemporain et tribal. Afriqu'Art célèbre la richesse des cultures africaines.</p>
+            <a href="#" class="btn">Explorer la galerie</a>
+        </div>
+        <div class="hero-image">
+            <i class="fas fa-dharmachakra"></i>
+        </div>
+    </section>
+
+    <!-- ŒUVRES EN VEDETTE -->
+    <h2 class="section-title"><i class="fas fa-palette" style="margin-right: 12px; color: #a77b5a;"></i>Œuvres en vedette</h2>
+    <div class="grid-oeuvres" id="oeuvresGrid">
+        <!-- les cartes seront générées par JS, mais on laisse un fallback statique -->
+    </div>
+
+    <!-- À PROPOS -->
+    <div class="about">
+        <div class="about-text">
+            <h3><i class="fas fa-hands" style="margin-right: 10px; color: #7a5a3e;"></i> Notre histoire</h3>
+            <p>Afriqu'Art est née d'une passion pour les arts premiers et modernes d'Afrique. Nous collaborons avec des artistes de tout le continent pour vous proposer des pièces authentiques, chargées d'histoire et de symboles.</p>
+            <p style="margin-top: 0.8rem;"><i class="fas fa-map-pin" style="color:#8b5e3c;"></i> Galerie à Dakar & exposition itinérante.</p>
+        </div>
+        <div class="about-icon">
+            <i class="fas fa-african-art" style="font-size: 4.8rem;"></i>
+        </div>
+    </div>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <h4><i class="fas fa-compass"></i> Afriqu'Art</h4>
+                <p>12 Rue des Arts, Dakar</p>
+                <p>+221 77 123 45 67</p>
+                <p>contact@afriquart.sn</p>
+            </div>
+            <div>
+                <h4>Liens</h4>
+                <a href="#">Accueil</a>
+                <a href="#">Galerie</a>
+                <a href="#">Artistes</a>
+                <a href="#">Expositions</a>
+            </div>
+            <div>
+                <h4>Suivez-nous</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Afriqu'Art · Tous droits réservés
+        </div>
+    </div>
+</footer>
+
+
+<!-- ============ JAVASCRIPT ============ -->
+<script>
+    (function() {
+        'use strict';
+
+        // ----- 1. MENU MOBILE TOGGLE -----
+        const menuToggle = document.getElementById('menuToggle');
+        const navList = document.getElementById('navList');
+
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navList.classList.toggle('open');
+            // changer l'icône
+            const icon = menuToggle.querySelector('i');
+            if (navList.classList.contains('open')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        });
+
+        // fermer le menu si on clique à l'extérieur (optionnel)
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('header')) {
+                if (navList.classList.contains('open')) {
+                    navList.classList.remove('open');
+                    const icon = menuToggle.querySelector('i');
+                    icon.className = 'fas fa-bars';
+                }
+            }
+        });
+
+        // ----- 2. GÉNÉRATION DYNAMIQUE DES ŒUVRES (avec données) -----
+        const oeuvres = [
+            { nom: 'Masque Bwa', artiste: 'Kouyaté S.', prix: '450 €', icone: 'fas fa-mask' },
+            { nom: 'Fétiche Baoulé', artiste: 'N’Guessan A.', prix: '320 €', icone: 'fas fa-wood' },
+            { nom: 'Statue Dogon', artiste: 'Diarra M.', prix: '590 €', icone: 'fas fa-people-arrows' },
+            { nom: 'Bronze Bénin', artiste: 'Okafor C.', prix: '780 €', icone: 'fas fa-crown' }
+        ];
+
+        const grid = document.getElementById('oeuvresGrid');
+        if (grid) {
+            grid.innerHTML = ''; // on vide
+            oeuvres.forEach(oeuvre => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <i class="${oeuvre.icone}"></i>
+                    <h3>${oeuvre.nom}</h3>
+                    <p>${oeuvre.artiste}</p>
+                    <span class="prix">${oeuvre.prix}</span>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ----- 3. PETIT EFFET D'INTERACTION (exemple: clic sur une carte) -----
+        // Délégation d'événement sur la grille
+        document.addEventListener('click', function(e) {
+            const card = e.target.closest('.card');
+            if (card && document.getElementById('oeuvresGrid')?.contains(card)) {
+                // on récupère le nom de l'œuvre
+                const nomOeuvre = card.querySelector('h3')?.innerText || 'œuvre';
+                // effet de feedback
+                card.style.transition = '0.15s';
+                card.style.transform = 'scale(0.96)';
+                setTimeout(() => {
+                    card.style.transform = '';
+                }, 180);
+                // petit message (simulation)
+                console.log(`👀 Intérêt pour : ${nomOeuvre}`);
+                // on peut aussi afficher une alerte légère (décommentez si voulu)
+                // alert(`Vous avez cliqué sur "${nomOeuvre}"`);
+            }
+        });
+
+        // ----- 4. ACTIVER LE LIEN ACTIF (simulé) -----
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // si c'est un lien "#" on empêche le rechargement
+                if (this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                }
+                // retirer la classe active de tous les liens
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                // fermer le menu mobile après clic (pour UX)
+                if (navList.classList.contains('open')) {
+                    navList.classList.remove('open');
+                    const icon = menuToggle.querySelector('i');
+                    icon.className = 'fas fa-bars';
+                }
+            });
+        });
+
+        // ----- 5. (Bonus) Animation d'apparition au scroll simplifiée -----
+        // On peut ajouter une classe aux cartes lorsqu'elles entrent dans le viewport
+        // (pour l'exemple, on le fait sur les cartes déjà présentes)
+        function revealCards() {
+            const cards = document.querySelectorAll('.card');
+            const windowHeight = window.innerHeight;
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const isVisible = rect.top < windowHeight - 80 && rect.bottom > 0;
+                if (isVisible) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                } else {
+                    // on ne cache pas complètement, mais on peut les initialiser
+                    if (!card.dataset.initialized) {
+                        card.style.opacity = '0.6';
+                        card.style.transform = 'translateY(20px)';
+                        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                        card.dataset.initialized = 'true';
+                    }
+                }
+            });
+        }
+
+        // application au chargement et au scroll
+        window.addEventListener('load', function() {
+            // on initialise toutes les cartes
+            document.querySelectorAll('.card').forEach(c => {
+                c.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease';
+                c.dataset.initialized = 'true';
+            });
+            revealCards();
+        });
+
+        window.addEventListener('scroll', revealCards);
+
+        console.log('🚀 Afriqu\'Art — site vitrine prêt !');
+    })();
+</script>
+
+<!-- petite correction pour que les icônes "wood" et "people-arrows" existent bien dans FontAwesome -->
+<!-- on remplace wood par "tree" dans le tableau si besoin, mais on laisse "fas fa-wood" qui n'existe pas, on va corriger avec des icônes valides -->
+<!-- correction dynamique via JS : on va remplacer les classes après coup pour éviter les icônes manquantes -->
+<script>
+    (function fixIcons() {
+        // quelques icônes de remplacement si jamais FontAwesome ne les a pas
+        const iconMap = {
+            'fa-wood': 'fa-tree',
+            'fa-people-arrows': 'fa-people-group'
+        };
+        document.querySelectorAll('.card i').forEach(icon => {
+            const classes = icon.className.split(' ');
+            let newClasses = [];
+            classes.forEach(cls => {
+                if (iconMap[cls]) {
+                    newClasses.push(iconMap[cls]);
+                } else {
+                    newClasses.push(cls);
+                }
+            });
+            icon.className = newClasses.join(' ');
+        });
+    })();
+</script>
+
+</body>
+</html>
