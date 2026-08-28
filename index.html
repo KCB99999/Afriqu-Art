@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Afrique'Art - Pagnes traditionnels du Burkina Faso</title>
+    <meta name="description" content="Afrique'Art perpétue l'art du tissage traditionnel burkinabè pour créer des pagnes d'exception, uniques et chargés d'histoire." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23A67B5B'/%3E%3Cpath d='M20 20 L80 20 L80 80 L20 80 Z' fill='none' stroke='%23F5E6CA' stroke-width='4'/%3E%3Cpath d='M30 40 L70 40 M30 60 L70 60 M40 30 L40 70 M60 30 L60 70' stroke='%23F5E6CA' stroke-width='2'/%3E%3C/svg%3E" />
+</head>
+<body>
+    <!-- ============================================================ -->
+    <!-- HEADER / NAVIGATION RESPONSIVE                                 -->
+    <!-- ============================================================ -->
+    <header class="header" role="banner">
+        <div class="container header-inner">
+            <!-- Logo -->
+            <a href="index.html" class="logo" aria-label="Afrique'Art - Accueil">
+                <svg class="logo-svg" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect width="40" height="40" rx="8" fill="#A67B5B" />
+                    <path d="M10 10L30 10L30 30L10 30Z" stroke="#F5E6CA" stroke-width="2" />
+                    <path d="M16 18L24 18M16 22L24 22M18 16L18 24M22 16L22 24" stroke="#F5E6CA" stroke-width="1.5" />
+                </svg>
+                <span class="logo-text">Afrique'<span class="logo-highlight">Art</span></span>
+            </a>
+
+            <!-- Bouton hamburger (mobile) -->
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Menu principal">
+                <span class="hamburger"></span>
+            </button>
+
+            <!-- Navigation -->
+            <nav id="mainNav" class="nav" role="navigation" aria-label="Navigation principale">
+                <ul class="nav-list">
+                    <li><a href="#accueil" class="active">Accueil</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#realisations">Réalisations</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact" class="btn-nav">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ============================================================ -->
+        <!-- SECTION HERO                                                  -->
+        <!-- ============================================================ -->
+        <section class="hero" id="accueil" aria-labelledby="heroTitle">
+            <div class="container hero-inner">
+                <div class="hero-content">
+                    <p class="hero-badge">Artisanat d'exception</p>
+                    <h1 id="heroTitle">L'âme du Burkina Faso <br /> tissée en chaque pagne</h1>
+                    <p class="hero-text">
+                        Afrique'Art perpétue l'art du tissage traditionnel burkinabè pour créer des pagnes
+                        d'exception, uniques et chargés d'histoire. Offrez-vous une authenticité inégalable.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+                        <a href="#realisations" class="btn btn-secondary">Voir nos créations</a>
+                    </div>
+                </div>
+                <div class="hero-image" aria-hidden="true">
+                    <div class="hero-pattern"></div>
+                    <div class="hero-textile"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION SERVICES                                              -->
+        <!-- ============================================================ -->
+        <section class="section services" id="services" aria-labelledby="servicesTitle">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Notre offre</span>
+                    <h2 id="servicesTitle">Des services tissés sur mesure</h2>
+                    <p class="section-sub">Du pagne traditionnel à la création personnalisée, nous répondons à toutes vos envies.</p>
+                </div>
+                <div class="services-grid">
+                    <article class="service-card">
+                        <div class="service-icon">🧵</div>
+                        <h3>Collections exclusives</h3>
+                        <p>Des pagnes aux motifs authentiques, tissés à la main selon les techniques ancestrales du Burkina Faso.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">✂️</div>
+                        <h3>Création sur-mesure</h3>
+                        <p>Un service personnalisé pour les créateurs, stylistes et particuliers en quête d'une pièce unique.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">🎨</div>
+                        <h3>Conseil &amp; accompagnement</h3>
+                        <p>Nous vous guidons dans le choix des motifs, des couleurs et des matières pour sublimer votre projet.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">📦</div>
+                        <h3>Livraison internationale</h3>
+                        <p>Expédition dans le monde entier. Nos pagnes voyagent avec soin jusqu'à votre atelier ou domicile.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION ABOUT                                                 -->
+        <!-- ============================================================ -->
+        <section class="section about" id="about" aria-labelledby="aboutTitle">
+            <div class="container about-inner">
+                <div class="about-image" aria-hidden="true">
+                    <div class="about-textile"></div>
+                </div>
+                <div class="about-content">
+                    <span class="section-tag">Notre histoire</span>
+                    <h2 id="aboutTitle">L'héritage d'un savoir-faire millénaire</h2>
+                    <p>
+                        Afrique'Art est né d'une passion : celle de préserver et partager l'art du tissage
+                        traditionnel burkinabè. Nos artisans perpétuent des gestes transmis de génération en génération.
+                    </p>
+                    <p>
+                        Chaque pagne est une œuvre d'art qui raconte une histoire, celle d'un peuple, d'une culture
+                        et de sa riche symbolique.
+                    </p>
+                    <ul class="about-values">
+                        <li>✅ Authenticité garantie</li>
+                        <li>✅ Tissage main 100 % artisanal</li>
+                        <li>✅ Fibres naturelles et teintures traditionnelles</li>
+                        <li>✅ Commerce équitable et respect des artisans</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Découvrir notre univers</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION RÉALISATIONS                                          -->
+        <!-- ============================================================ -->
+        <section class="section realisations" id="realisations" aria-labelledby="realisationsTitle">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Nos créations</span>
+                    <h2 id="realisationsTitle">Chaque pagne est une signature</h2>
+                    <p class="section-sub">Découvrez une sélection de nos réalisations, reflets de notre exigence et de notre créativité.</p>
+                </div>
+                <div class="realisations-grid">
+                    <figure class="realisation-card">
+    <div class="realisation-image" style="background-image: url('Koko\ Dunda.jpg'); background-size: cover; background-position: center;"></div>
+    <figcaption>
+        <h3>Pagne "Terre d'Afrique"</h3>
+        <p>Motifs géométriques, teintures naturelles</p>
+    </figcaption>
+</figure>
+                    <figure class="realisation-card">
+    <div class="realisation-image" style="background-image: url('Koko\ Dunda\ \(1\).jpg'); background-size: cover; background-position: center;"></div>
+    <figcaption>
+        <h3>Collection "Savane"</h3>
+        <p>Inspiré des paysages burkinabè</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="realisation-card">
+    <div class="realisation-image" style="background-image: url('Kokodunda\ salade.jpg'); background-size: cover; background-position: center;"></div>
+    <figcaption>
+        <h3>Pagne "Cérémonie"</h3>
+        <p>Pièce unique pour les grandes occasions</p>
+    </figcaption>
+</figure>
+                    <figure class="realisation-card">
+    <div class="realisation-image" style="background-image: url('Kokodunda\ salade\ \(2\).jpg'); background-size: cover; background-position: center;"></div>
+    <figcaption>
+        <h3>Collection "Créateurs"</h3>
+        <p>Sur-mesure pour les professionnels</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION TÉMOIGNAGES                                           -->
+        <!-- ============================================================ -->
+        <section class="section testimonials" aria-labelledby="testimonialsTitle">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Ils nous font confiance</span>
+                    <h2 id="testimonialsTitle">Ce que disent nos clients</h2>
+                </div>
+                <div class="testimonials-grid">
+                    <blockquote class="testimonial-card">
+                        <p>"Les pagnes d'Afrique'Art sont d'une qualité exceptionnelle. Mes collections prennent vie grâce à leur savoir-faire."</p>
+                        <cite>— Fatoumata K., Styliste</cite>
+                    </blockquote>
+                    <blockquote class="testimonial-card">
+                        <p>"Un travail authentique et profondément respectueux de la tradition burkinabè. Je suis ravie de ma commande."</p>
+                        <cite>— Marie D., Particulière</cite>
+                    </blockquote>
+                    <blockquote class="testimonial-card">
+                        <p>"L'accompagnement est parfait, du choix des motifs à la livraison. Une expérience unique."</p>
+                        <cite>— Thomas L., Collectionneur</cite>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION FAQ                                                   -->
+        <!-- ============================================================ -->
+        <section class="section faq" id="faq" aria-labelledby="faqTitle">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Questions fréquentes</span>
+                    <h2 id="faqTitle">Tout savoir sur nos pagnes</h2>
+                </div>
+                <div class="faq-list" role="list">
+                    <details class="faq-item" role="listitem">
+                        <summary>Quelle est l'origine des pagnes Afrique'Art ?</summary>
+                        <p>Nos pagnes sont tissés à la main au Burkina Faso par des artisans locaux qui perpétuent des techniques ancestrales de tissage et de teinture naturelle.</p>
+                    </details>
+                    <details class="faq-item" role="listitem">
+                        <summary>Proposez-vous des créations sur-mesure ?</summary>
+                        <p>Oui, nous proposons un service de création personnalisée pour les particuliers et les professionnels. Vous pouvez choisir les motifs, les couleurs et les dimensions.</p>
+                    </details>
+                    <details class="faq-item" role="listitem">
+                        <summary>Quels sont les délais de livraison ?</summary>
+                        <p>Les délais varient selon la complexité de votre commande. Comptez généralement entre 4 et 6 semaines pour une création sur-mesure.</p>
+                    </details>
+                    <details class="faq-item" role="listitem">
+                        <summary>Livrez-vous à l'international ?</summary>
+                        <p>Oui, nous expédions nos pagnes dans le monde entier. Les frais de livraison sont calculés en fonction de votre localisation.</p>
+                    </details>
+                    <details class="faq-item" role="listitem">
+                        <summary>Comment entretenir mon pagne ?</summary>
+                        <p>Nos pagnes sont en fibres naturelles. Nous vous conseillons un lavage à la main à l'eau froide et un séchage à l'ombre pour préserver la brillance des couleurs.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION CONTACT - FORMULAIRE COMPLET                          -->
+        <!-- ============================================================ -->
+        <section class="section contact" id="contact" aria-labelledby="contactTitle">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Contact</span>
+                    <h2 id="contactTitle">Parlons de votre projet</h2>
+                    <p class="section-sub">Une question, une envie ? Échangeons autour de la création de votre pagne unique.</p>
+                </div>
+                <div class="contact-inner">
+                    <!-- Formulaire de contact complet -->
+                    <form class="contact-form" id="contactForm" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nom complet *</label>
+                                <input type="text" id="name" name="name" placeholder="Votre nom et prénom" required autocomplete="name" />
+                                <span class="error-message" id="nameError">Veuillez saisir votre nom complet.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Adresse email *</label>
+                                <input type="email" id="email" name="email" placeholder="votre@email.fr" required autocomplete="email" />
+                                <span class="error-message" id="emailError">Veuillez saisir une adresse email valide.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Téléphone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+226 70 12 34 56" autocomplete="tel" />
+                                <span class="error-message" id="phoneError">Format invalide. Ex: +226 70 12 34 56</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Service souhaité *</label>
+                                <select id="service" name="service" required>
+                                    <option value="">Choisissez un service</option>
+                                    <option value="devis">Demande de devis</option>
+                                    <option value="personnalise">Création personnalisée</option>
+                                    <option value="partenariat">Partenariat professionnel</option>
+                                    <option value="collection">Achat d'une collection</option>
+                                    <option value="info">Demande d'information</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                                <span class="error-message" id="serviceError">Veuillez sélectionner un service.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet, vos envies, vos contraintes..." required></textarea>
+                            <span class="error-message" id="messageError">Veuillez décrire votre projet en quelques mots.</span>
+                        </div>
+
+                        <!-- Champs cachés pour le suivi -->
+                        <input type="hidden" name="source" value="site_web" />
+
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span class="btn-icon">✉️</span>
+                            Envoyer ma demande
+                        </button>
+                        <p class="form-note">
+                            <span class="form-note-icon">🔒</span>
+                            Vos données sont confidentielles et ne seront pas partagées.
+                            Nous vous répondrons sous 48h.
+                        </p>
+                    </form>
+
+                    <!-- Coordonnées -->
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <span class="contact-icon">📍</span>
+                            <div>
+                                <strong>Atelier</strong>
+                                <p>Ouagadougou, Burkina Faso</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <span class="contact-icon">✉️</span>
+                            <div>
+                                <strong>Email</strong>
+                                <a href="mailto:contact@afriqueart.com">contact@afriqueart.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <span class="contact-icon">📞</span>
+                            <div>
+                                <strong>Téléphone</strong>
+                                <a href="tel:+22670123456">+226 70 12 34 56</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <span class="contact-icon">🕐</span>
+                            <div>
+                                <strong>Horaires</strong>
+                                <p>Lun - Ven : 8h00 - 18h00</p>
+                            </div>
+                        </div>
+                        <div class="contact-social">
+                            <p><strong>Suivez-nous</strong></p>
+                            <div class="social-links">
+                                <a href="#" aria-label="Facebook">📘</a>
+                                <a href="#" aria-label="Instagram">📸</a>
+                                <a href="#" aria-label="YouTube">▶️</a>
+                                <a href="#" aria-label="LinkedIn">🔗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER                                                        -->
+    <!-- ============================================================ -->
+    <footer class="footer" role="contentinfo">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="logo-icon">🧵</span>
+                <span class="logo-text">Afrique'Art</span>
+                <p>L'art du pagne traditionnel burkinabè, tissé avec passion depuis 2015.</p>
+            </div>
+            <div class="footer-links">
+                <div>
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#realisations">Réalisations</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">CGV</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Afrique'Art. Tous droits réservés. Conçu avec ❤️ au Burkina Faso.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
