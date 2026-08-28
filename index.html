@@ -1,667 +1,395 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Afriqu'Art · Galerie d'art africain</title>
-    <!-- Font Awesome pour les icônes -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* ---------- RESET & BASE ---------- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        body {
-            background-color: #faf7f2;
-            color: #2e241e;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* ---------- BOUTON MENU MOBILE ---------- */
-        .menu-toggle {
-            display: none;
-            font-size: 1.8rem;
-            background: none;
-            border: none;
-            color: #4b2e1b;
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-        }
-
-        /* ---------- HEADER / NAV ---------- */
-        header {
-            background: linear-gradient(145deg, #f3ede6, #e8dfd6);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 2px solid #d8c9b8;
-        }
-
-        .header-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo i {
-            font-size: 2.2rem;
-            color: #a77b5a;
-        }
-
-        .logo h1 {
-            font-size: 2rem;
-            font-weight: 400;
-            letter-spacing: 2px;
-            color: #3d2a1a;
-        }
-        .logo h1 span {
-            font-weight: 700;
-            color: #8b5e3c;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            font-weight: 500;
-            color: #4b3422;
-            font-size: 1.05rem;
-            padding: 0.5rem 0;
-            border-bottom: 2px solid transparent;
-            transition: 0.25s ease;
-        }
-
-        nav ul li a:hover {
-            border-bottom-color: #a77b5a;
-            color: #2b1a0e;
-        }
-
-        nav ul li a.active {
-            border-bottom-color: #8b5e3c;
-            color: #2b1a0e;
-        }
-
-        /* ---------- HERO ---------- */
-        .hero {
-            background: linear-gradient(135deg, #dacfc1 0%, #cbb9a6 100%);
-            border-radius: 30px;
-            padding: 3.5rem 3rem;
-            margin: 2.5rem 0;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        .hero-text {
-            flex: 1 1 280px;
-        }
-
-        .hero-text h2 {
-            font-size: 2.8rem;
-            font-weight: 300;
-            color: #2b1f14;
-            line-height: 1.2;
-        }
-        .hero-text h2 strong {
-            font-weight: 600;
-            color: #4d2e18;
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            margin: 1.5rem 0 2rem;
-            color: #3d2d1d;
-            max-width: 500px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: #3d2a1a;
-            color: #f5ede4;
-            padding: 0.9rem 2.8rem;
-            border-radius: 60px;
-            font-weight: 600;
-            text-decoration: none;
-            letter-spacing: 1px;
-            transition: 0.3s;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 6px 14px rgba(61, 42, 26, 0.25);
-        }
-
-        .btn:hover {
-            background: #261a10;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 20px rgba(61, 42, 26, 0.3);
-        }
-
-        .hero-image {
-            flex: 1 1 240px;
-            text-align: center;
-            font-size: 6rem;
-            color: #5a3f2a;
-            opacity: 0.8;
-            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.1));
-        }
-
-        /* ---------- SECTION ŒUVRES ---------- */
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 300;
-            margin: 3rem 0 1.8rem;
-            color: #3b2a1a;
-            border-left: 6px solid #a77b5a;
-            padding-left: 1.2rem;
-        }
-
-        .grid-oeuvres {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .card {
-            background: white;
-            border-radius: 28px;
-            padding: 1.8rem 1.2rem 1.8rem;
-            text-align: center;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-            transition: 0.3s ease;
-            border: 1px solid #ece3d9;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
-            border-color: #d6c3b0;
-        }
-
-        .card i {
-            font-size: 3.5rem;
-            color: #7a5a3e;
-            margin-bottom: 0.8rem;
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-            font-weight: 500;
-            color: #38281b;
-        }
-
-        .card p {
-            color: #6b5543;
-            font-size: 0.95rem;
-            margin: 0.6rem 0;
-        }
-
-        .card .prix {
-            display: inline-block;
-            margin-top: 0.8rem;
-            background: #e6dbcf;
-            padding: 0.2rem 1.4rem;
-            border-radius: 40px;
-            font-weight: 600;
-            color: #3d2a1a;
-            font-size: 1rem;
-        }
-
-        /* ---------- À PROPOS ---------- */
-        .about {
-            background: #e7dbcf;
-            border-radius: 40px;
-            padding: 2.8rem 3rem;
-            margin: 3.5rem 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .about-text {
-            flex: 2 1 280px;
-        }
-        .about-text h3 {
-            font-size: 2rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-        }
-        .about-text p {
-            color: #2f2218;
-            font-size: 1.1rem;
-        }
-
-        .about-icon {
-            flex: 1 1 120px;
-            text-align: center;
-            font-size: 5rem;
-            color: #624b34;
-        }
-
-        /* ---------- FOOTER ---------- */
-        footer {
-            background: #2d2017;
-            color: #d6c9bc;
-            padding: 2.5rem 0 2rem;
-            border-radius: 40px 40px 0 0;
-            margin-top: 3rem;
-        }
-
-        .footer-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-        }
-
-        .footer-grid div {
-            flex: 1 1 160px;
-        }
-
-        .footer-grid h4 {
-            color: #ede3d8;
-            font-weight: 400;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .footer-grid p, .footer-grid a {
-            color: #b8a697;
-            text-decoration: none;
-            display: block;
-            margin: 0.5rem 0;
-            transition: 0.2s;
-        }
-
-        .footer-grid a:hover {
-            color: #f0e1d2;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1.2rem;
-            font-size: 1.6rem;
-            margin-top: 0.8rem;
-        }
-
-        .social-icons a {
-            color: #b8a697;
-            transition: 0.2s;
-        }
-        .social-icons a:hover {
-            color: #f0e1d2;
-            transform: scale(1.08);
-        }
-
-        .copyright {
-            text-align: center;
-            margin-top: 2.5rem;
-            border-top: 1px solid #3d2e21;
-            padding-top: 1.8rem;
-            font-size: 0.9rem;
-            color: #9a897b;
-        }
-
-        /* ---------- RESPONSIVE ---------- */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            nav ul {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background: #f3ede6;
-                padding: 1.5rem 0;
-                border-radius: 30px;
-                margin-top: 1rem;
-                gap: 1rem;
-                text-align: center;
-            }
-
-            nav ul.open {
-                display: flex;
-            }
-
-            nav ul li a {
-                font-size: 1.2rem;
-                border-bottom: none;
-            }
-
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 2rem 1.5rem;
-            }
-            .hero-text p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .hero-image {
-                margin-top: 1.5rem;
-            }
-            .about {
-                flex-direction: column;
-                text-align: center;
-                padding: 2rem 1.5rem;
-            }
-            .logo h1 {
-                font-size: 1.6rem;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header-flex {
-                flex-wrap: wrap;
-            }
-            .logo i {
-                font-size: 1.8rem;
-            }
-            .hero-text h2 {
-                font-size: 2.2rem;
-            }
-            .btn {
-                padding: 0.7rem 2rem;
-            }
-        }
-        .btn-acheter {
-            background-color: #8b5e3c;
-            color: #fff;
-            border: none;
-            padding: 0.6rem 1.4rem;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: 0.3s ease;
-
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Afrique'Art - Pagnes traditionnels du Burkina Faso</title>
+    <meta name="description" content="Afrique'Art perpétue l'art du tissage traditionnel burkinabè pour créer des pagnes d'exception, uniques et chargés d'histoire." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23A67B5B'/%3E%3Cpath d='M20 20 L80 20 L80 80 L20 80 Z' fill='none' stroke='%23F5E6CA' stroke-width='4'/%3E%3Cpath d='M30 40 L70 40 M30 60 L70 60 M40 30 L40 70 M60 30 L60 70' stroke='%23F5E6CA' stroke-width='2'/%3E%3C/svg%3E" />
 </head>
 <body>
+    <!-- ============================================================ -->
+    <!-- HEADER / NAVIGATION RESPONSIVE                                 -->
+    <!-- ============================================================ -->
+    <header class="header" role="banner">
+        <div class="container header-inner">
+            <!-- Logo -->
+            <a href="index.html" class="logo" aria-label="Afrique'Art - Accueil">
+                <svg class="logo-svg" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect width="40" height="40" rx="8" fill="#A67B5B" />
+                    <path d="M10 10L30 10L30 30L10 30Z" stroke="#F5E6CA" stroke-width="2" />
+                    <path d="M16 18L24 18M16 22L24 22M18 16L18 24M22 16L22 24" stroke="#F5E6CA" stroke-width="1.5" />
+                </svg>
+                <span class="logo-text">Afrique'<span class="logo-highlight">Art</span></span>
+            </a>
 
-<!-- ============ HEADER ============ -->
-<header>
-    <div class="container header-flex">
-        <div class="logo">
-            <i class="fas fa-palette"></i>
-            <h1>Afriqu'<span>Art</span></h1>
+            <!-- Bouton hamburger (mobile) -->
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Menu principal">
+                <span class="hamburger"></span>
+            </button>
+
+            <!-- Navigation -->
+            <nav id="mainNav" class="nav" role="navigation" aria-label="Navigation principale">
+                <ul class="nav-list">
+                    <li><a href="#accueil" class="active">Accueil</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#realisations">Réalisations</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact" class="btn-nav">Contact</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
 
-        <!-- menu toggle (mobile) -->
-        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-            <i class="fas fa-bars"></i>
-        </button>
-
-        <nav>
-            <ul id="navList">
-                <li><a href="#" class="active">Accueil</a></li>
-                <li><a href="#">Œuvres</a></li>
-                <li><a href="#">Artistes</a></li>
-                <li><a href="#">Expositions</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-
-<!-- ============ MAIN ============ -->
-<main class="container">
-
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-text">
-            <h2>L'âme de l'Afrique <br><strong>en chaque œuvre</strong></h2>
-            <p>Découvrez une collection unique d'art contemporain et tribal. Afriqu'Art célèbre la richesse des cultures africaines.</p>
-            <a href="#" class="btn">Explorer la galerie</a>
-        </div>
-        <div class="hero-image">
-            <i class="fas fa-dharmachakra"></i>
-        </div>
-    </section>
-
-    <!-- ŒUVRES EN VEDETTE -->
-    <h2 class="section-title"><i class="fas fa-palette" style="margin-right: 12px; color: #a77b5a;"></i>Œuvres en vedette</h2>
-    <div class="grid-oeuvres" id="oeuvresGrid">
-        <!-- les cartes seront générées par JS, mais on laisse un fallback statique -->
-    </div>
-
-    <!-- À PROPOS -->
-    <div class="about">
-        <div class="about-text">
-            <h3><i class="fas fa-hands" style="margin-right: 10px; color: #7a5a3e;"></i> Notre histoire</h3>
-            <p>Afriqu'Art est une entreprise de vente de pagne traditionnel situé au Burkina Faso plus précisément à Banfora.</p>
-            <p style="margin-top: 0.8rem;"><i class="fas fa-map-pin" style="color:#8b5e3c;"></i> Galerie à Banfora & exposition itinérante.</p>
-        </div>
-        <div class="about-icon">
-            <i class="fas fa-african-art" style="font-size: 4.8rem;"></i>
-        </div>
-    </div>
-
-</main>
-
-<!-- ============ FOOTER ============ -->
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div>
-                <h4><i class="fas fa-compass"></i> Afriqu'Art</h4>
-                <p>En face du maquis BAOBAB, Banfora</p>
-                <p>+226 45679409</p>
-                <p>contact@afriquart.bf</p>
+    <main>
+        <!-- ============================================================ -->
+        <!-- SECTION HERO                                                  -->
+        <!-- ============================================================ -->
+        <section class="hero" id="accueil" aria-labelledby="heroTitle">
+            <div class="container hero-inner">
+                <div class="hero-content">
+                    <p class="hero-badge">Artisanat d'exception</p>
+                    <h1 id="heroTitle">L'âme du Burkina Faso <br /> tissée en chaque pagne</h1>
+                    <p class="hero-text">
+                        Afrique'Art perpétue l'art du tissage traditionnel burkinabè pour créer des pagnes
+                        d'exception, uniques et chargés d'histoire. Offrez-vous une authenticité inégalable.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+                        <a href="#realisations" class="btn btn-secondary">Voir nos créations</a>
+                    </div>
+                </div>
+                <div class="hero-image" aria-hidden="true">
+                    <div class="hero-pattern"></div>
+                    <div class="hero-textile"></div>
+                </div>
             </div>
-            <div>
-                <h4>Liens</h4>
-                <a href="#">Accueil</a>
-                <a href="#">Galerie</a>
-                <a href="#">Artistes</a>
-                <a href="#">Expositions</a>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION SERVICES                                              -->
+        <!-- ============================================================ -->
+        <section class="section services" id="services" aria-labelledby="servicesTitle">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Notre offre</span>
+                    <h2 id="servicesTitle">Des services tissés sur mesure</h2>
+                    <p class="section-sub">Du pagne traditionnel à la création personnalisée, nous répondons à toutes vos envies.</p>
+                </div>
+                <div class="services-grid">
+                    <article class="service-card">
+                        <div class="service-icon">🧵</div>
+                        <h3>Collections exclusives</h3>
+                        <p>Des pagnes aux motifs authentiques, tissés à la main selon les techniques ancestrales du Burkina Faso.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">✂️</div>
+                        <h3>Création sur-mesure</h3>
+                        <p>Un service personnalisé pour les créateurs, stylistes et particuliers en quête d'une pièce unique.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">🎨</div>
+                        <h3>Conseil &amp; accompagnement</h3>
+                        <p>Nous vous guidons dans le choix des motifs, des couleurs et des matières pour sublimer votre projet.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">📦</div>
+                        <h3>Livraison internationale</h3>
+                        <p>Expédition dans le monde entier. Nos pagnes voyagent avec soin jusqu'à votre atelier ou domicile.</p>
+                    </article>
+                </div>
             </div>
-            <div>
-                <h4>Suivez-nous</h4>
-                <div class="social-icons">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION ABOUT                                                 -->
+        <!-- ============================================================ -->
+        <section class="section about" id="about" aria-labelledby="aboutTitle">
+            <div class="container about-inner">
+                <div class="about-image" aria-hidden="true">
+                    <div class="about-textile"></div>
+                </div>
+                <div class="about-content">
+                    <span class="section-tag">Notre histoire</span>
+                    <h2 id="aboutTitle">L'héritage d'un savoir-faire millénaire</h2>
+                    <p>
+                        Afrique'Art est né d'une passion : celle de préserver et partager l'art du tissage
+                        traditionnel burkinabè. Nos artisans perpétuent des gestes transmis de génération en génération.
+                    </p>
+                    <p>
+                        Chaque pagne est une œuvre d'art qui raconte une histoire, celle d'un peuple, d'une culture
+                        et de sa riche symbolique.
+                    </p>
+                    <ul class="about-values">
+                        <li>✅ Authenticité garantie</li>
+                        <li>✅ Tissage main 100 % artisanal</li>
+                        <li>✅ Fibres naturelles et teintures traditionnelles</li>
+                        <li>✅ Commerce équitable et respect des artisans</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Découvrir notre univers</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION RÉALISATIONS                                          -->
+        <!-- ============================================================ -->
+        <section class="section realisations" id="realisations" aria-labelledby="realisationsTitle">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Nos créations</span>
+                    <h2 id="realisationsTitle">Chaque pagne est une signature</h2>
+                    <p class="section-sub">Découvrez une sélection de nos réalisations, reflets de notre exigence et de notre créativité.</p>
+                </div>
+                <div class="realisations-grid">
+                    <figure class="realisation-card">
+                        <div class="realisation-image" style="background:linear-gradient(red)"></div>
+                        <figcaption>
+                            <h3>Pagne "Terre d'Afrique"</h3>
+                            <p>Motifs géométriques, teintures naturelles</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="realisation-card">
+                        <div class="realisation-image" style="background:linear-gradient(135deg,#1a3a2a,#5a8a6a);"></div>
+                        <figcaption>
+                            <h3>Collection "Savane"</h3>
+                            <p>Inspiré des paysages burkinabè</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="realisation-card">
+                        <div class="realisation-image" style="background:linear-gradient(135deg,#4a1a2a,#b05a7a);"></div>
+                        <figcaption>
+                            <h3>Pagne "Cérémonie"</h3>
+                            <p>Pièce unique pour les grandes occasions</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="realisation-card">
+                        <div class="realisation-image" style="background:linear-gradient(135deg,#2a2a3a,#7a7a9a);"></div>
+                        <figcaption>
+                            <h3>Collection "Créateurs"</h3>
+                            <p>Sur-mesure pour les professionnels</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION TÉMOIGNAGES                                           -->
+        <!-- ============================================================ -->
+        <section class="section testimonials" aria-labelledby="testimonialsTitle">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Ils nous font confiance</span>
+                    <h2 id="testimonialsTitle">Ce que disent nos clients</h2>
+                </div>
+                <div class="testimonials-grid">
+                    <blockquote class="testimonial-card">
+                        <p>"Les pagnes d'Afrique'Art sont d'une qualité exceptionnelle. Mes collections prennent vie grâce à leur savoir-faire."</p>
+                        <cite>— Fatoumata K., Styliste</cite>
+                    </blockquote>
+                    <blockquote class="testimonial-card">
+                        <p>"Un travail authentique et profondément respectueux de la tradition burkinabè. Je suis ravie de ma commande."</p>
+                        <cite>— Marie D., Particulière</cite>
+                    </blockquote>
+                    <blockquote class="testimonial-card">
+                        <p>"L'accompagnement est parfait, du choix des motifs à la livraison. Une expérience unique."</p>
+                        <cite>— Thomas L., Collectionneur</cite>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION FAQ                                                   -->
+        <!-- ============================================================ -->
+        <section class="section faq" id="faq" aria-labelledby="faqTitle">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Questions fréquentes</span>
+                    <h2 id="faqTitle">Tout savoir sur nos pagnes</h2>
+                </div>
+                <div class="faq-list" role="list">
+                    <details class="faq-item" role="listitem">
+                        <summary>Quelle est l'origine des pagnes Afrique'Art ?</summary>
+                        <p>Nos pagnes sont tissés à la main au Burkina Faso par des artisans locaux qui perpétuent des techniques ancestrales de tissage et de teinture naturelle.</p>
+                    </details>
+                    <details class="faq-item" role="listitem">
+                        <summary>Proposez-vous des créations sur-mesure ?</summary>
+                        <p>Oui, nous proposons un service de création personnalisée pour les particuliers et les professionnels. Vous pouvez choisir les motifs, les couleurs et les dimensions.</p>
+                    </details>
+                    <details class="faq-item" role="listitem">
+                        <summary>Quels sont les délais de livraison ?</summary>
+                        <p>Les délais varient selon la complexité de votre commande. Comptez généralement entre 4 et 6 semaines pour une création sur-mesure.</p>
+                    </details>
+                    <details class="faq-item" role="listitem">
+                        <summary>Livrez-vous à l'international ?</summary>
+                        <p>Oui, nous expédions nos pagnes dans le monde entier. Les frais de livraison sont calculés en fonction de votre localisation.</p>
+                    </details>
+                    <details class="faq-item" role="listitem">
+                        <summary>Comment entretenir mon pagne ?</summary>
+                        <p>Nos pagnes sont en fibres naturelles. Nous vous conseillons un lavage à la main à l'eau froide et un séchage à l'ombre pour préserver la brillance des couleurs.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION CONTACT - FORMULAIRE COMPLET                          -->
+        <!-- ============================================================ -->
+        <section class="section contact" id="contact" aria-labelledby="contactTitle">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Contact</span>
+                    <h2 id="contactTitle">Parlons de votre projet</h2>
+                    <p class="section-sub">Une question, une envie ? Échangeons autour de la création de votre pagne unique.</p>
+                </div>
+                <div class="contact-inner">
+                    <!-- Formulaire de contact complet -->
+                    <form class="contact-form" id="contactForm" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nom complet *</label>
+                                <input type="text" id="name" name="name" placeholder="Votre nom et prénom" required autocomplete="name" />
+                                <span class="error-message" id="nameError">Veuillez saisir votre nom complet.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Adresse email *</label>
+                                <input type="email" id="email" name="email" placeholder="votre@email.fr" required autocomplete="email" />
+                                <span class="error-message" id="emailError">Veuillez saisir une adresse email valide.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Téléphone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+226 70 12 34 56" autocomplete="tel" />
+                                <span class="error-message" id="phoneError">Format invalide. Ex: +226 70 12 34 56</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Service souhaité *</label>
+                                <select id="service" name="service" required>
+                                    <option value="">Choisissez un service</option>
+                                    <option value="devis">Demande de devis</option>
+                                    <option value="personnalise">Création personnalisée</option>
+                                    <option value="partenariat">Partenariat professionnel</option>
+                                    <option value="collection">Achat d'une collection</option>
+                                    <option value="info">Demande d'information</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                                <span class="error-message" id="serviceError">Veuillez sélectionner un service.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet, vos envies, vos contraintes..." required></textarea>
+                            <span class="error-message" id="messageError">Veuillez décrire votre projet en quelques mots.</span>
+                        </div>
+
+                        <!-- Champs cachés pour le suivi -->
+                        <input type="hidden" name="source" value="site_web" />
+
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span class="btn-icon">✉️</span>
+                            Envoyer ma demande
+                        </button>
+                        <p class="form-note">
+                            <span class="form-note-icon">🔒</span>
+                            Vos données sont confidentielles et ne seront pas partagées.
+                            Nous vous répondrons sous 48h.
+                        </p>
+                    </form>
+
+                    <!-- Coordonnées -->
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <span class="contact-icon">📍</span>
+                            <div>
+                                <strong>Atelier</strong>
+                                <p>Ouagadougou, Burkina Faso</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <span class="contact-icon">✉️</span>
+                            <div>
+                                <strong>Email</strong>
+                                <a href="mailto:contact@afriqueart.com">contact@afriqueart.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <span class="contact-icon">📞</span>
+                            <div>
+                                <strong>Téléphone</strong>
+                                <a href="tel:+22670123456">+226 70 12 34 56</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <span class="contact-icon">🕐</span>
+                            <div>
+                                <strong>Horaires</strong>
+                                <p>Lun - Ven : 8h00 - 18h00</p>
+                            </div>
+                        </div>
+                        <div class="contact-social">
+                            <p><strong>Suivez-nous</strong></p>
+                            <div class="social-links">
+                                <a href="#" aria-label="Facebook">📘</a>
+                                <a href="#" aria-label="Instagram">📸</a>
+                                <a href="#" aria-label="YouTube">▶️</a>
+                                <a href="#" aria-label="LinkedIn">🔗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER                                                        -->
+    <!-- ============================================================ -->
+    <footer class="footer" role="contentinfo">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="logo-icon">🧵</span>
+                <span class="logo-text">Afrique'Art</span>
+                <p>L'art du pagne traditionnel burkinabè, tissé avec passion depuis 2015.</p>
+            </div>
+            <div class="footer-links">
+                <div>
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#realisations">Réalisations</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">CGV</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class="copyright">
-            &copy; 2026 Afriqu'Art · Tous droits réservés
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Afrique'Art. Tous droits réservés. Conçu avec ❤️ au Burkina Faso.</p>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
-
-<!-- ============ JAVASCRIPT ============ -->
-<script>
-    (function() {
-        'use strict';
-
-        // ----- 1. MENU MOBILE TOGGLE -----
-        const menuToggle = document.getElementById('menuToggle');
-        const navList = document.getElementById('navList');
-
-        menuToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            navList.classList.toggle('open');
-            // changer l'icône
-            const icon = menuToggle.querySelector('i');
-            if (navList.classList.contains('open')) {
-                icon.className = 'fas fa-times';
-            } else {
-                icon.className = 'fas fa-bars';
-            }
-        });
-
-        // fermer le menu si on clique à l'extérieur (optionnel)
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('header')) {
-                if (navList.classList.contains('open')) {
-                    navList.classList.remove('open');
-                    const icon = menuToggle.querySelector('i');
-                    icon.className = 'fas fa-bars';
-                }
-            }
-        });
-
-        // ----- 2. GÉNÉRATION DYNAMIQUE DES ŒUVRES (avec données) -----
-        const oeuvres = [
-            { nom: 'Pagne bôbô', artiste: 'Ramata S.', prix: '5500 FCFA', icone: 'fas fa-flag' },
-            { nom: 'Pagne yôrôsô', artiste: 'Ramata S.', prix: '6000 FCFA', icone: 'fas fa-wood' },
-            { nom: 'Statue dagara', artiste: 'Ramata S.', prix: '5500 FCFA', icone: 'fas fa-people-arrows' },
-            { nom: 'Bronze lobi', artiste: 'Ramata S.', prix: '5500 FCFA', icone: 'fas fa-crown' }
-        ];
-
-        const grid = document.getElementById('oeuvresGrid');
-        if (grid) {
-            grid.innerHTML = ''; // on vide
-            oeuvres.forEach(oeuvre => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <i class="${oeuvre.icone}"></i>
-                    <h3>${oeuvre.nom}</h3>
-                    <p>${oeuvre.artiste}</p>
-                    <span class="prix">${oeuvre.prix}</span>
-                    <button class="btn-acheter">Faire une commande</button>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // ----- 3. PETIT EFFET D'INTERACTION (exemple: clic sur une carte) -----
-        // Délégation d'événement sur la grille
-        document.addEventListener('click', function(e) {
-            const card = e.target.closest('.card');
-            if (card && document.getElementById('oeuvresGrid')?.contains(card)) {
-                // on récupère le nom de l'œuvre
-                const nomOeuvre = card.querySelector('h3')?.innerText || 'œuvre';
-                // effet de feedback
-                card.style.transition = '0.15s';
-                card.style.transform = 'scale(0.96)';
-                setTimeout(() => {
-                    card.style.transform = '';
-                }, 180);
-                // petit message (simulation)
-                console.log(`👀 Intérêt pour : ${nomOeuvre}`);
-                // on peut aussi afficher une alerte légère (décommentez si voulu)
-                // alert(`Vous avez cliqué sur "${nomOeuvre}"`);
-            }
-        });
-
-        // ----- 4. ACTIVER LE LIEN ACTIF (simulé) -----
-        const navLinks = document.querySelectorAll('nav ul li a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                // si c'est un lien "#" on empêche le rechargement
-                if (this.getAttribute('href') === '#') {
-                    e.preventDefault();
-                }
-                // retirer la classe active de tous les liens
-                navLinks.forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-                // fermer le menu mobile après clic (pour UX)
-                if (navList.classList.contains('open')) {
-                    navList.classList.remove('open');
-                    const icon = menuToggle.querySelector('i');
-                    icon.className = 'fas fa-bars';
-                }
-            });
-        });
-
-        // ----- 5. (Bonus) Animation d'apparition au scroll simplifiée -----
-        // On peut ajouter une classe aux cartes lorsqu'elles entrent dans le viewport
-        // (pour l'exemple, on le fait sur les cartes déjà présentes)
-        function revealCards() {
-            const cards = document.querySelectorAll('.card');
-            const windowHeight = window.innerHeight;
-            cards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                const isVisible = rect.top < windowHeight - 80 && rect.bottom > 0;
-                if (isVisible) {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                } else {
-                    // on ne cache pas complètement, mais on peut les initialiser
-                    if (!card.dataset.initialized) {
-                        card.style.opacity = '0.6';
-                        card.style.transform = 'translateY(20px)';
-                        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                        card.dataset.initialized = 'true';
-                    }
-                }
-            });
-        }
-
-        // application au chargement et au scroll
-        window.addEventListener('load', function() {
-            // on initialise toutes les cartes
-            document.querySelectorAll('.card').forEach(c => {
-                c.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease';
-                c.dataset.initialized = 'true';
-            });
-            revealCards();
-        });
-
-        window.addEventListener('scroll', revealCards);
-
-        console.log('🚀 Afriqu\'Art — site vitrine prêt !');
-    })();
-</script>
-
-<!-- petite correction pour que les icônes "wood" et "people-arrows" existent bien dans FontAwesome -->
-<!-- on remplace wood par "tree" dans le tableau si besoin, mais on laisse "fas fa-wood" qui n'existe pas, on va corriger avec des icônes valides -->
-<!-- correction dynamique via JS : on va remplacer les classes après coup pour éviter les icônes manquantes -->
-<script>
-    (function fixIcons() {
-        // quelques icônes de remplacement si jamais FontAwesome ne les a pas
-        const iconMap = {
-            'fa-wood': 'fa-tree',
-            'fa-people-arrows': 'fa-people-group'
-        };
-        document.querySelectorAll('.card i').forEach(icon => {
-            const classes = icon.className.split(' ');
-            let newClasses = [];
-            classes.forEach(cls => {
-                if (iconMap[cls]) {
-                    newClasses.push(iconMap[cls]);
-                } else {
-                    newClasses.push(cls);
-                }
-            });
-            icon.className = newClasses.join(' ');
-        });
-    })();
-</script>
-
+    <script src="app.js"></script>
 </body>
 </html>
