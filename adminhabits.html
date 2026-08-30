@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Habits - Afrique'Art</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #1e1e1e; padding: 2rem; }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fcf8f3;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #a67b5b;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: #5a4a3a;
+            margin-bottom: 2rem;
+        }
+        
+        /* Drag & Drop Zone */
+        .drop-zone {
+            background: #fff;
+            border: 3px dashed #a67b5b;
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 2rem;
+        }
+        
+        .drop-zone:hover {
+            background: #f0e6d8;
+            border-color: #8b6549;
+        }
+        
+        .drop-zone.dragover {
+            background: #e8d5bf;
+            border-color: #a67b5b;
+            transform: scale(1.02);
+        }
+        
+        .drop-zone i {
+            font-size: 4rem;
+            color: #a67b5b;
+            margin-bottom: 1rem;
+        }
+        
+        .drop-zone p {
+            color: #5a4a3a;
+            font-weight: 600;
+        }
+        
+        .drop-zone small {
+            color: #8a7a6a;
+            display: block;
+            margin-top: 0.5rem;
+        }
+        
+        /* Aperçu de l'image */
+        .image-preview {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 3px solid #a67b5b;
+            margin: 1rem auto;
+            display: none;
+        }
+        
+        /* Formulaire */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: #3a2a1a;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #a67b5b;
+        }
+        
+        /* Boutons */
+        .save-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            background: #25D366;
+            color: #fff;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .save-btn:hover {
+            background: #1eb857;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        .save-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .reset-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            background: #a67b5b;
+            color: #fff;
+            padding: 0.8rem;
+            margin-top: 1rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: none;
+        }
+        
+        .reset-btn:hover {
+            background: #8b6549;
+        }
+        
+        /* Statut */
+        .status-message {
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: 600;
+            display: none;
+        }
+        
+        .status-success {
+            color: #27ae60;
+        }
+        
+        .status-error {
+            color: #e74c3c;
+        }
+        
+        /* Liste des produits */
+        .product-list {
+            margin-top: 2rem;
+            border-top: 1px solid #efe8de;
+            padding-top: 2rem;
+        }
+        
+        .product-list h2 {
+            font-family: 'Playfair Display', serif;
+            color: #1e1e1e;
+            margin-bottom: 1rem;
+        }
+        
+        .product-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #efe8de;
+        }
+        
+        .product-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .product-item-info {
+            flex: 1;
+        }
+        
+        .product-item-info h4 {
+            margin-bottom: 0.2rem;
+        }
+        
+        .product-item-info p {
+            color: #777;
+            font-size: 0.85rem;
+        }
+        
+        .product-price {
+            font-weight: 700;
+            color: #a67b5b;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn-edit {
+            background: #f39c12;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+        }
+        
+        .btn-edit:hover {
+            background: #e67e22;
+        }
+        
+        .btn-delete {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+        }
+        
+        .btn-delete:hover {
+            background: #c0392b;
+        }
+        
+        /* Link boutique */
+        .boutique-link {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .boutique-link a {
+            color: #a67b5b;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .boutique-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="mainContent">
+        <h1>🛠️ Admin Habits</h1>
+        <p class="subtitle">Glissez votre image, remplissez les infos, et tout est automatique !</p>
+        
+        <!-- Zone de glisser-déposer -->
+        <div class="drop-zone" id="dropZone">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Glissez-déposez votre image ici</p>
+            <small>ou cliquez pour choisir une image</small>
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+        </div>
+        
+        <!-- Aperçu de l'image -->
+        <img id="imagePreview" class="image-preview" alt="Aperçu">
+        
+        <!-- Formulaire -->
+        <div class="form-section">
+            <div class="form-group">
+                <label for="name">Nom de l'habit</label>
+                <input type="text" id="name" placeholder="Ex: Robe élégante">
+            </div>
+            <div class="form-group">
+                <label for="price">Prix (FCFA)</label>
+                <input type="number" id="price" placeholder="Ex: 35000">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" id="description" placeholder="Ex: Cousu main, tissu pagne">
+            </div>
+        </div>
+        
+        <!-- Boutons -->
+        <button class="save-btn" id="saveBtn" disabled>
+            <i class="fas fa-save"></i>
+            Enregistrer automatiquement
+        </button>
+        <button class="reset-btn" id="resetBtn">
+            <i class="fas fa-undo"></i>
+            Annuler la modification
+        </button>
+        
+        <div class="status-message" id="statusMessage"></div>
+        
+        <!-- Liste des produits existants -->
+        <div class="product-list" id="productList">
+            <h2>📋 Habits actuellement en boutique</h2>
+        </div>
+        
+        <!-- Lien boutique -->
+        <div class="boutique-link">
+            <a href="boutiquehabits.html">← Voir la boutique</a>
+        </div>
+    </div>
+
+   <script>
+    // ============================================================
+    // PROTECTION PAR CODE D'ACCÈS (Masque tout le contenu + mot de passe caché)
+    // ============================================================
+
+    // Code d'accès encodé (Afrique@Art en ASCII)
+    const ENCRYPTED_CODE = [65, 102, 114, 105, 113, 117, 101, 64, 65, 114, 116];
+
+    // Fonction pour décoder le code
+    function decodeCode(encryptedCode) {
+        return encryptedCode.map(function(code) {
+            return String.fromCharCode(code);
+        }).join('');
+    }
+
+    // Vérifier si l'utilisateur est déjà authentifié
+    if (sessionStorage.getItem('admin_authenticated_habits') !== 'true') {
+
+        // Masquer le contenu principal (display:none)
+        document.getElementById('mainContent').style.display = 'none';
+
+        // Créer un écran de connexion séparé
+        const loginScreen = document.createElement('div');
+        loginScreen.id = 'loginScreen';
+        loginScreen.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #1e1e1e; display: flex; align-items: center; justify-content: center; z-index: 99999;';
+        
+        loginScreen.innerHTML = `
+            <div style="background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); text-align: center; max-width: 350px;">
+                <h2 style="font-family: 'Playfair Display', serif; color: #a67b5b; margin-bottom: 1rem;">🔒 Accès Admin Habits</h2>
+                <p style="color: #5a4a3a; margin-bottom: 1.5rem;">Entrez le code d'accès</p>
+                
+                <input type="password" id="passwordInput" placeholder="Mot de passe" 
+                       style="width: 100%; padding: 0.8rem; border: 1.5px solid #ddd; border-radius: 8px; font-size: 1rem; margin-bottom: 1rem;">
+                
+                <button onclick="verifyPassword()" 
+                        style="width: 100%; background: #a67b5b; color: #fff; padding: 0.8rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">
+                    Se connecter
+                </button>
+                
+                <p id="errorMessage" style="color: #e74c3c; margin-top: 0.5rem; display: none;">Code incorrect</p>
+            </div>
+        `;
+
+        // Ajouter l'écran de connexion au body
+        document.body.appendChild(loginScreen);
+
+        // Fonction pour vérifier le code
+        window.verifyPassword = function() {
+            const enteredCode = document.getElementById('passwordInput').value;
+            const correctCode = decodeCode(ENCRYPTED_CODE);
+
+            if (enteredCode !== correctCode) {
+                document.getElementById('errorMessage').style.display = 'block';
+                return;
+            }
+
+            // Authentification réussie
+            sessionStorage.setItem('admin_authenticated_habits', 'true');
+            
+            // Retirer l'écran de connexion
+            document.getElementById('loginScreen').remove();
+            
+            // Rendre le contenu principal visible
+            document.getElementById('mainContent').style.display = 'block';
+            
+            // Recharger les produits (si le code initial a été exécuté)
+            loadProducts();
+        };
+    }
+
+    // ============================================================
+    // ADMIN HABITS - GESTION AUTOMATIQUE
+    // ============================================================
+    
+    // 1. Identifiants (avec vos clés)
+    const HABITS_BIN_ID = '6a9380f8da38895dfe21a744';
+    const MASTER_KEY = '$2a$10$xLsyIJeXi/u7PGNQBnJE5uCSnIgdSDfGjQXfA/SWUhdcKd6LM/ROu';
+    const IMGBB_API_KEY = 'd1afa02025470b11065132bbaac31b7f'; // Votre clé IMGBB
+    
+    // 2. Variables
+    let products = [];
+    let uploadedImageUrl = '';
+    let editingIndex = -1;
+    
+    // 3. Charger les produits
+    async function loadProducts() {
+        try {
+            const response = await fetch('https://api.jsonbin.io/v3/b/' + HABITS_BIN_ID + '/latest', {
+                method: 'GET',
+                headers: { 'X-Master-Key': MASTER_KEY }
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                products = data.record;
+                if (!Array.isArray(products)) { products = []; }
+            }
+        } catch (error) {
+            console.error('Erreur de chargement :', error);
+        }
+        
+        renderProductList();
+    }
+    
+    // 4. Sauvegarder les produits
+    function saveProducts() {
+        fetch('https://api.jsonbin.io/v3/b/' + HABITS_BIN_ID, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json', 'X-Master-Key': MASTER_KEY },
+            body: JSON.stringify(products)
+        }).then(function(response) {
+            if (response.ok) {
+                showStatus('✅ Habit enregistré et boutique mise à jour !', 'success');
+            } else {
+                showStatus('❌ Erreur de sauvegarde. Vérifiez vos clés API.', 'error');
+            }
+        }).catch(function(error) {
+            showStatus('❌ Erreur réseau. Vérifiez votre connexion.', 'error');
+        });
+    }
+    
+    // 5. Afficher la liste
+    function renderProductList() {
+        const list = document.getElementById('productList');
+        list.innerHTML = '<h2>📋 Habits actuellement en boutique</h2>';
+        
+        if (products.length === 0) {
+            list.innerHTML += '<p style="color: #777; text-align: center; padding: 2rem;">Aucun habit en boutique. Ajoutez votre premier !</p>';
+            return;
+        }
+        
+        products.forEach(function(product, index) {
+            const item = document.createElement('div');
+            item.className = 'product-item';
+            item.innerHTML = '<img src="' + product.image + '" alt="' + product.name + '" onerror="this.src=\'https://via.placeholder.com/60\'">' +
+                '<div class="product-item-info"><h4>' + product.name + '</h4><p>' + product.description + '</p></div>' +
+                '<div class="product-price">' + product.price + '</div>' +
+                '<div class="product-actions">' +
+                '<button class="btn-edit" onclick="editProduct(' + index + ')"><i class="fas fa-edit"></i></button>' +
+                '<button class="btn-delete" onclick="deleteProduct(' + index + ')"><i class="fas fa-trash"></i></button>' +
+                '</div>';
+            list.appendChild(item);
+        });
+    }
+    
+    // 6. Glisser-déposer
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    
+    dropZone.addEventListener('click', function() {
+        fileInput.click();
+    });
+    
+    dropZone.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        dropZone.classList.add('dragover');
+    });
+    
+    dropZone.addEventListener('dragleave', function() {
+        dropZone.classList.remove('dragover');
+    });
+    
+    dropZone.addEventListener('drop', function(e) {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+        const file = e.dataTransfer.files[0];
+        if (file) {
+            handleFile(file);
+        }
+    });
+    
+    fileInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            handleFile(file);
+        }
+    });
+    
+    // 7. Gérer l'image
+    function handleFile(file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('imagePreview').src = e.target.result;
+            document.getElementById('imagePreview').style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+        
+        uploadImage(file);
+    }
+    
+    // 8. Upload vers IMGBB
+    function uploadImage(file) {
+        const formData = new FormData();
+        formData.append('image', file);
+        
+        fetch('https://api.imgbb.com/1/upload?key=' + IMGBB_API_KEY, {
+            method: 'POST',
+            body: formData
+        }).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            if (data.success) {
+                uploadedImageUrl = data.data.url;
+                document.getElementById('saveBtn').disabled = false;
+                showStatus('✅ Image téléchargée. Vous pouvez enregistrer !', 'success');
+            } else {
+                showStatus('❌ Erreur lors du téléchargement de l\'image.', 'error');
+            }
+        }).catch(function(error) {
+            showStatus('❌ Erreur réseau. Vérifiez votre connexion.', 'error');
+        });
+    }
+    
+    // 9. Enregistrer (ajout ou modification)
+    document.getElementById('saveBtn').addEventListener('click', function() {
+        const name = document.getElementById('name').value;
+        const price = document.getElementById('price').value;
+        const description = document.getElementById('description').value;
+        
+        if (!name) {
+            showStatus('❌ Veuillez entrer le nom de l\'habit.', 'error');
+            return;
+        }
+        
+        if (!price) {
+            showStatus('❌ Veuillez entrer le prix.', 'error');
+            return;
+        }
+        
+        const formattedPrice = Number(price).toLocaleString('fr-FR') + ' FCFA';
+        
+        const product = {
+            name: name,
+            description: description || 'Habit cousu main',
+            price: formattedPrice,
+            image: uploadedImageUrl || 'https://via.placeholder.com/300'
+        };
+        
+        if (editingIndex >= 0) {
+            products[editingIndex] = product;
+            editingIndex = -1;
+        } else {
+            products.push(product);
+        }
+        
+        saveProducts();
+        
+        document.getElementById('name').value = '';
+        document.getElementById('price').value = '';
+        document.getElementById('description').value = '';
+        document.getElementById('imagePreview').src = '';
+        document.getElementById('imagePreview').style.display = 'none';
+        uploadedImageUrl = '';
+        document.getElementById('saveBtn').disabled = true;
+        
+        renderProductList();
+    });
+    
+    // 10. Modifier
+    function editProduct(index) {
+        const product = products[index];
+        document.getElementById('name').value = product.name;
+        document.getElementById('price').value = product.price.replace(' FCFA', '').replace(/\s/g, '');
+        document.getElementById('description').value = product.description;
+        
+        const imagePreview = document.getElementById('imagePreview');
+        imagePreview.src = product.image;
+        imagePreview.style.display = 'block';
+        imagePreview.dataset.url = product.image;
+        uploadedImageUrl = product.image;
+        
+        document.getElementById('saveBtn').disabled = false;
+        editingIndex = index;
+    }
+    
+    // 11. Supprimer
+    function deleteProduct(index) {
+        if (confirm('Voulez-vous vraiment supprimer cet habit ?')) {
+            products.splice(index, 1);
+            renderProductList();
+            saveProducts();
+        }
+    }
+    
+    // 12. Statut
+    function showStatus(message, type) {
+        const status = document.getElementById('statusMessage');
+        status.textContent = message;
+        status.className = 'status-message ' + (type === 'success' ? 'status-success' : 'status-error');
+        status.style.display = 'block';
+        
+        setTimeout(function() {
+            status.style.display = 'none';
+        }, 3000);
+    }
+    
+    // 13. Initialiser
+    loadProducts();
+</script>
+</body>
+</html>

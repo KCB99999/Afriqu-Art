@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Afrique'Art - Pagnes traditionnels du Burkina Faso</title>
+    <meta name="description" content="Afrique'Art perpétue l'art du tissage traditionnel burkinabè pour créer des pagnes d'exception, uniques et chargés d'histoire." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/svg+xml" href="image/logo1.jpeg" />
+</head>
+<body>
+    <!-- ============================================================ -->
+    <!-- BOUTON WHATSAPP FLOTTANT (BAS DROITE)                         -->
+    <!-- ============================================================ -->
+    <a href="https://api.whatsapp.com/send/?phone=22656618132" 
+       class="whatsapp-float" 
+       target="_blank" 
+       aria-label="Discuter sur WhatsApp"
+       title="Discuter sur WhatsApp">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        <span class="whatsapp-float-text">Besoin d'aide ?</span>
+    </a>
+
+    <!-- ============================================================ -->
+    <!-- HEADER / NAVIGATION RESPONSIVE                                 -->
+    <!-- ============================================================ -->
+    <header class="header" role="banner">
+        <div class="container header-inner">
+            <!-- Logo -->
+            <a href="index.html" class="logo" aria-label="Afrique'Art - Accueil">
+                <img src="image/logo1.jpeg" alt="Logo Afrique'Art" class="logo-img" style="height: 60px; width: auto;">
+            </a>
+            <h2 style="font-size: 2rem; margin: 0 0 0 15px; font-family: 'Playfair Display', serif; font-weight: 900;">Afrique'Art</h2>
+
+            <!-- Bouton hamburger (mobile) -->
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Menu principal">
+                <span class="hamburger"></span>
+            </button>
+
+            <!-- Navigation -->
+            <nav id="mainNav" class="nav" role="navigation" aria-label="Navigation principale">
+                <ul class="nav-list">
+                    <li><a href="#accueil" class="active">Accueil</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="boutiquepagne.html">Notre boutique</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#realisations">Réalisations</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact" class="btn-nav">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="accueil" aria-labelledby="heroTitle">
+            <div class="container hero-inner">
+                <div class="hero-content">
+                    <p class="hero-badge">Artisanat d'exception</p>
+                    <h1 id="heroTitle">L'âme du Burkina Faso <br /> inserer dans chaque pagne</h1>
+                    <p class="hero-text">
+                        Afrique'Art perpétue l'art de la tradition burkinabè pour créer des pagnes
+                        d'exception, uniques et chargés d'histoire. Offrez-vous une authenticité inégalable.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+                        <a href="#realisations" class="btn btn-secondary">Voir nos créations</a>
+                    </div>
+                </div>
+                <div class="hero-image" aria-hidden="true">
+                    <div class="hero-pattern"></div>
+                    <div class="hero-textile"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="section services" id="services" aria-labelledby="servicesTitle">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Notre offre</span>
+                    <h2 id="servicesTitle">Des services faite sur mesure</h2>
+                    <p class="section-sub">Du pagne traditionnel à la création personnalisée, nous répondons à toutes vos envies.</p>
+                </div>
+                <div class="services-grid">
+                    <article class="service-card">
+                        <div class="service-icon">🧵</div>
+                        <h3>Collections exclusives</h3>
+                        <p>Des pagnes aux motifs authentiques, confectionné à la main selon les techniques ancestrales du Burkina Faso.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">✂️</div>
+                        <h3>Création sur-mesure</h3>
+                        <p>Un service personnalisé pour les créateurs, stylistes et particuliers en quête d'une pièce unique.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">🎨</div>
+                        <h3>Conseil &amp; accompagnement</h3>
+                        <p>Nous vous guidons dans le choix des motifs, des couleurs et des matières pour sublimer votre projet.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">📦</div>
+                        <h3>Livraison internationale</h3>
+                        <p>Expédition dans le monde entier. Nos pagnes voyagent avec soin jusqu'à votre atelier ou domicile.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section about" id="about" aria-labelledby="aboutTitle">
+            <div class="container about-inner">
+                <div class="about-image" aria-hidden="true">
+                    <div class="about-textile"></div>
+                </div>
+                <div class="about-content">
+                    <span class="section-tag">Notre histoire</span>
+                    <h2 id="aboutTitle">L'héritage d'un savoir-faire millénaire</h2>
+                    <p>
+                        Afrique'Art est né d'une passion : celle de préserver et partager l'art du confectionnement
+                        traditionnel des pagnes burkinabè comme le kokodunda. Nos artisans perpétuent des gestes transmis de génération en génération.
+                    </p>
+                    <p>
+                        Chaque pagne est une œuvre d'art qui raconte une histoire, celle d'un peuple, d'une culture
+                        et de sa riche symbolique.
+                    </p>
+                    <ul class="about-values">
+                        <li>✅ Authenticité garantie</li>
+                        <li>✅ Tissage main 100 % artisanal</li>
+                        <li>✅ Fibres naturelles et teintures traditionnelles</li>
+                        <li>✅ Commerce équitable et respect des artisans</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Découvrir notre univers</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- RÉALISATIONS -->
+        <section class="section realisations" id="realisations" aria-labelledby="realisationsTitle">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Nos créations</span>
+                    <h2 id="realisationsTitle">Chaque pagne est une signature</h2>
+                    <p class="section-sub">Découvrez une sélection de nos réalisations, reflets de notre exigence et de notre créativité.</p>
+                </div>
+                <div class="realisations-grid">
+                    <figure class="realisation-card">
+                        <div class="realisation-image" style="background-image: url('image/Koko\ Dunda.jpg'); background-size: cover; background-position: center;"></div>
+                        <figcaption>
+                            <h3>Pagne "Terre d'Afrique"</h3>
+                            <p>Motifs géométriques, teintures naturelles</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="realisation-card">
+                        <div class="realisation-image" style="background-image: url('image/Koko\ Dunda\ \(1\).jpg'); background-size: cover; background-position: center;"></div>
+                        <figcaption>
+                            <h3>Collection "Savane"</h3>
+                            <p>Inspiré des paysages burkinabè</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="realisation-card">
+                        <div class="realisation-image" style="background-image: url('image/Kokodunda\ salade.jpg'); background-size: cover; background-position: center;"></div>
+                        <figcaption>
+                            <h3>Pagne "Cérémonie"</h3>
+                            <p>Pièce unique pour les grandes occasions</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="realisation-card">
+                        <div class="realisation-image" style="background-image: url('image/Kokodunda\ salade\ \(2\).jpg'); background-size: cover; background-position: center;"></div>
+                        <figcaption>
+                            <h3>Collection "Créateurs"</h3>
+                            <p>Sur-mesure pour les professionnels</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- TÉMOIGNAGES -->
+        <section class="section testimonials" aria-labelledby="testimonialsTitle">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Ils nous font confiance</span>
+                    <h2 id="testimonialsTitle">Ce que disent nos clients</h2>
+                </div>
+                <div class="testimonials-grid">
+                    <blockquote class="testimonial-card">
+                        <p>"Les pagnes d'Afrique'Art sont d'une qualité exceptionnelle. Mes collections prennent vie grâce à leur savoir-faire."</p>
+                        <cite>— Fatoumata K., Styliste</cite>
+                    </blockquote>
+                    <blockquote class="testimonial-card">
+                        <p>"Un travail authentique et profondément respectueux de la tradition burkinabè. Je suis ravie de ma commande."</p>
+                        <cite>— Marie D., Particulière</cite>
+                    </blockquote>
+                    <blockquote class="testimonial-card">
+                        <p>"L'accompagnement est parfait, du choix des motifs à la livraison. Une expérience unique."</p>
+                        <cite>— Thomas L., Collectionneur</cite>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section faq" id="faq" aria-labelledby="faqTitle">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Questions fréquentes</span>
+                    <h2 id="faqTitle">Tout savoir sur nos pagnes</h2>
+                </div>
+                <div class="faq-list" role="list">
+                    <details class="faq-item" role="listitem">
+                        <summary>Quelle est l'origine des pagnes Afrique'Art ?</summary>
+                        <p>Nos pagnes sont tissés à la main au Burkina Faso par des artisans locaux qui perpétuent des techniques ancestrales de tissage et de teinture naturelle.</p>
+                    </details>
+                    <details class="faq-item" role="listitem">
+                        <summary>Proposez-vous des créations sur-mesure ?</summary>
+                        <p>Oui, nous proposons un service de création personnalisée pour les particuliers et les professionnels. Vous pouvez choisir les motifs, les couleurs et les dimensions.</p>
+                    </details>
+                    <details class="faq-item" role="listitem">
+                        <summary>Quels sont les délais de livraison ?</summary>
+                        <p>Les délais varient selon la complexité de votre commande. Comptez généralement entre 4 et 6 semaines pour une création sur-mesure.</p>
+                    </details>
+                    <details class="faq-item" role="listitem">
+                        <summary>Livrez-vous à l'international ?</summary>
+                        <p>Oui, nous expédions nos pagnes dans le monde entier. Les frais de livraison sont calculés en fonction de votre localisation.</p>
+                    </details>
+                    <details class="faq-item" role="listitem">
+                        <summary>Comment entretenir mon pagne ?</summary>
+                        <p>Nos pagnes sont en fibres naturelles. Nous vous conseillons un lavage à la main à l'eau froide et un séchage à l'ombre pour préserver la brillance des couleurs.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section contact" id="contact" aria-labelledby="contactTitle">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Contact</span>
+                    <h2 id="contactTitle">Parlons de votre projet</h2>
+                    <p class="section-sub">Une question, une envie ? Échangeons autour de la création de votre pagne unique.</p>
+                </div>
+                <div class="contact-inner">
+                    <form class="contact-form" id="contactForm" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nom complet *</label>
+                                <input type="text" id="name" name="name" placeholder="Votre nom et prénom" required autocomplete="name" />
+                                <span class="error-message" id="nameError">Veuillez saisir votre nom complet.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Adresse email *</label>
+                                <input type="email" id="email" name="email" placeholder="votre@email.fr" required autocomplete="email" />
+                                <span class="error-message" id="emailError">Veuillez saisir une adresse email valide.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Téléphone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+226 56 61 81 32" autocomplete="tel" />
+                                <span class="error-message" id="phoneError">Format invalide. Ex: +226 56 61 81 32</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Service souhaité *</label>
+                                <select id="service" name="service" required>
+                                    <option value="">Choisissez un service</option>
+                                    <option value="devis">Demande de devis</option>
+                                    <option value="personnalise">Création personnalisée</option>
+                                    <option value="partenariat">Partenariat professionnel</option>
+                                    <option value="collection">Achat d'un pack</option>
+                                    <option value="info">Demande d'information</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                                <span class="error-message" id="serviceError">Veuillez sélectionner un service.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet, vos envies, vos contraintes..." required></textarea>
+                            <span class="error-message" id="messageError">Veuillez décrire votre projet en quelques mots.</span>
+                        </div>
+
+                        <input type="hidden" name="source" value="site_web" />
+
+                       <button type="button" id="whatsappBtn" class="btn btn-primary btn-full">
+                            ✉️ Envoyer via WhatsApp
+                        </button>
+                        <p class="form-note">
+                            <span class="form-note-icon">🔒</span>
+                            Vos données sont confidentielles et ne seront pas partagées.
+                            Nous vous répondrons sous 48h.
+                        </p>
+                    </form>
+
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <span class="contact-icon">📍</span>
+                            <div>
+                                <strong>Atelier</strong>
+                                <p>Banfora, Burkina Faso</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <span class="contact-icon">✉️</span>
+                            <div>
+                                <strong>Email</strong>
+                                <a href="mailto:contact@afriqueart.com">contact@afriqueart.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <span class="contact-icon">📞</span>
+                            <div>
+                                <strong>Téléphone</strong>
+                                <a href="tel:+22656618132">+226 56 61 81 32</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <span class="contact-icon">🕐</span>
+                            <div>
+                                <strong>Horaires</strong>
+                                <p>Lun - Ven : 5h00 - 18h00</p>
+                                <p>Sam - Dim : 9h00 - 17h00</p>
+                            </div>
+                        </div>
+                        <div class="contact-social">
+                            <p><strong>Suivez-nous</strong></p>
+                            <div class="social-links">
+                                <a href="https://www.facebook.com/profile.php?id=100075700827408" aria-label="Facebook" target="_blank">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.026 1.792-4.697 4.533-4.697 1.313 0 2.686.236 2.686.236v2.971H15.83c-1.491 0-1.956.931-1.956 1.886v2.264h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://www.tiktok.com/@afrique_art_" aria-label="TikTok" target="_blank">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://api.whatsapp.com/send/?phone=22656618132" aria-label="WhatsApp" target="_blank">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="logo-icon">🧵</span>
+                <span class="logo-text">Afrique'Art</span>
+                <p>L'art du pagne traditionnel burkinabè, faite avec passion depuis 2015.</p>
+            </div>
+            <div class="footer-links">
+                <div>
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="boutiquepagne.html">Notre boutique</a></li>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#realisations">Réalisations</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">CGV</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Afrique'Art. Tous droits réservés. Conçu avec Sirima Nombie Abdoul Koudus  au Burkina Faso.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script du formulaire WhatsApp -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var btn = document.getElementById('whatsappBtn');
+            if (btn) {
+                btn.addEventListener('click', function() {
+                    var name = document.getElementById('name').value.trim();
+                    var email = document.getElementById('email').value.trim();
+                    var phone = document.getElementById('phone').value.trim();
+                    var service = document.getElementById('service').value;
+                    var message = document.getElementById('message').value.trim();
+
+                    if (!name || !email || !service || !message) {
+                        alert('Veuillez remplir les champs obligatoires (*)');
+                        return;
+                    }
+
+                    var text = 'Bonjour Afrique\u2019Art,%0A%0A' +
+                               '👤 Nom : ' + encodeURIComponent(name) + '%0A' +
+                               '📧 Email : ' + encodeURIComponent(email) + '%0A' +
+                               '📞 Téléphone : ' + encodeURIComponent(phone || 'Non renseigné') + '%0A' +
+                               '🛠️ Service : ' + encodeURIComponent(service) + '%0A%0A' +
+                               '📝 Message : ' + encodeURIComponent(message);
+
+                    window.open('https://api.whatsapp.com/send/?phone=22656618132&text=' + text, '_blank');
+                    document.getElementById('contactForm').reset();
+                });
+            }
+        });
+    </script>
+
+    <script src="app.js"></script>
+</body>
+</html>
